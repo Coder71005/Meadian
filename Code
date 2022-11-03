@@ -1,0 +1,51 @@
+	import Java.util.Scanner; 
+  public class Median {
+  public  int[] Merge(int[] nums1 , int[] nums2,int nums3[]) {
+    	int i =0,j =0,k =0;
+    	int n1 = nums1.length;
+    	int n2 = nums2.length; 
+    	while(i<n1 && j<n2) {
+    		if(nums1[i]<nums2[j])
+    			nums3[k++] = nums1[i++]; 
+    		
+    		else
+    			nums3[k++] = nums2[j++]; }
+    	
+    	while(i<n1)
+    		nums3[k++] = nums1[i++];
+    	
+    	while(j<n2)
+    		nums3[k++] = nums2[j++];
+    	
+		return nums3;
+	}
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int n1 = nums1.length;
+    	int n2 = nums2.length;
+    	int nums3[] = new int[n1+n2];
+    	nums3  = Merge(nums1,nums2,nums3);
+    	int n3 = nums3.length;
+    	if (n3%2 !=0) {
+    		return nums3[n3/2]; 
+    	}
+        float ans =nums3[n3/2]+nums3[(n3/2)-1];
+    	return ans/2;    
+    }
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt(); 
+		int [] nums1 = new int [n];
+		int m = sc.nextInt();
+		int [] nums2 = new int [m];
+		for(int i =0;i<n;i++)
+			nums1[i] = sc.nextInt();
+		
+		for(int i =0;i<m;i++)
+			nums2[i] = sc.nextInt();
+		
+		System.out.println(findMedianSortedArrays(nums1,nums2));
+}		
+		
+}
+    
